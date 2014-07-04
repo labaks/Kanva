@@ -4,6 +4,9 @@ var cellSize = 50;
 function toPx(val) {
 	return val * cellSize;
 }
+function toCells(val) {
+	return val / cellSize;
+}
 function coordinate(coord) {
 	return toPx(coord);
 }
@@ -18,6 +21,23 @@ gameX = 0;
 gameY = 0;
 playerX = 2;
 playerY = 2;
+
+botX = 5;
+botY = 5;
+
+map =
+	[
+		[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+		[2, 2, 2, 2, 1, 1, 1, 2, 2, 2],
+		[2, 2, 1, 1, 1, 1, 1, 1, 2, 2],
+		[2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+		[2, 2, 1, 1, 1, 1, 1, 1, 1, 2],
+		[2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+		[2, 1, 1, 1, 1, 1, 1, 1, 2, 2],
+		[2, 1, 1, 1, 1, 1, 1, 2, 2, 2],
+		[2, 1, 1, 1, 1, 2, 1, 2, 2, 2],
+		[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+	]
 // Converter end
 
 function rect(color, x, y, width, height) {
@@ -44,53 +64,38 @@ function init() {
 	canvas.height = toPx(collCanvasCells);
 	canvas.style.backgroundColor = "#ccc";
 	game = new rect("black", gameX, gameY, collGameCells, collGameCells);
-	bot = new rect("grey", 5, 5, 1, 1);
+	bot = new rect("grey", botX, botY, oneCell, oneCell);
 	draw();
 	playerMove();
-
 }
 function createPlayer() {
 	player = new rect("orange", playerX, playerY, playerSize, playerSize);
 	player.drawObject();
 }
 function background() {
-	map = 
-	[
-		[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-		[2, 2, 2, 2, 1, 1, 1, 2, 2, 2],
-		[2, 2, 1, 1, 1, 1, 1, 1, 2, 2],
-		[2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-		[2, 2, 1, 1, 1, 1, 1, 1, 1, 2],
-		[2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-		[2, 1, 1, 1, 1, 1, 1, 1, 2, 2],
-		[2, 1, 1, 1, 1, 1, 1, 2, 2, 2],
-		[2, 1, 1, 1, 1, 2, 1, 2, 2, 2],
-		[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-	]
 	for (var i = 0; i < collGameCells; i++) {
 		for (var j = 0; j < collGameCells; j++) {
 			switch (map[j][i]) {
 				case 1:
-					createGround(i, j);
+					createCellGround(i, j, "green");
 					break;
 				case 2:
-					createWater(i, j);
+					createCellGround(i, j, "blue");
 					break;
 			}
 		}
 	}
 }
-function createGround(Gx, Gy) {
-	var ground = new rect("green", Gx, Gy, oneCell, oneCell);
-	ground.drawObject();
-}
-function createWater(Wx, Wy) {
-	var water = new rect("blue", Wx, Wy, oneCell, oneCell);
-	water.drawObject();
+function createCellGround(Gx, Gy, cell) {
+	var cellGround = new rect(cell , Gx, Gy, oneCell, oneCell);
+	cellGround.drawObject();
 }
 function playerMove() {
 	function playerStepToNorth() {
-		if ((playerY - oneStep > -oneStep) && !collisionPlayerOnMap(playerX, playerY - oneStep)) {
+		if ((playerY - oneStep > -oneStep) &&
+			!collisionPlayerOnMap(playerX, playerY - oneStep)
+			// !collision(playerX, playerY - oneStep, playerSize, playerSize, toCells(bot.x), toCells(bot.y), oneCell, oneCell)
+			) {
 			return true;
 		} else {
 			return false;
@@ -126,10 +131,10 @@ function playerMove() {
 	}
 }
 function collision(objAX, objAY, objAWidth, objAHeight, objBX, objBY, objBWidth, objBHeight) {
-	if (objAX+objAWidth  > objBX &&
-        objAX            < objBX + objBWidth &&
-        objAY+objAHeight > objBY &&
-        objAY            < objBY + objBHeight) {
+	if (objAX + objAWidth  > objBX &&
+        objAX              < objBX + objBWidth &&
+        objAY + objAHeight > objBY &&
+        objAY              < objBY + objBHeight) {
             return true;
         }
         else {
@@ -137,21 +142,21 @@ function collision(objAX, objAY, objAWidth, objAHeight, objBX, objBY, objBWidth,
         }
 }
 function collisionPlayerOnMap(futureStepX, futureStepY) {
-	console.log("enter to collisionPlayerOnMap");
 	for (var i = 0; i < collGameCells; i++) {
 		for (var j = 0; j < collGameCells; j++) {
 			switch (map[j][i]) {
 				case 2:
-				console.log("enter to case 2");
 					if (collision(i, j, oneCell, oneCell, futureStepX, futureStepY, playerSize, playerSize)) {
-						console.log("playerY = " + playerY);
-						console.log("futureStepY = " + futureStepY);
 						console.log("case 2 true");
+						console.log("playerY = " + playerY);
+						console.log("i = " + i + "; j = " +j);
+						console.log("futureStepY = " + futureStepY);
 						return true;
 					} else {
-						console.log("playerY = " + playerY);
-						console.log("futureStepY = " + futureStepY);
 						console.log("case 2 false");
+						console.log("playerY = " + playerY);
+						console.log("i = " + i + "; j = " +j);
+						console.log("futureStepY = " + futureStepY);
 						return false;
 					}
 					break;
