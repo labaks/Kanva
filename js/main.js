@@ -87,80 +87,63 @@ function background() {
 	}
 }
 function createCellGround(Gx, Gy, cell) {
-	var cellGround = new rect(cell , Gx, Gy, oneCell, oneCell);
+	cellGround = new rect(cell , Gx, Gy, oneCell, oneCell);
 	cellGround.drawObject();
 }
 function playerMove() {
 	function playerStepToNorth() {
-		if ((playerY - oneStep > -oneStep) &&
-			!collisionPlayerOnMap(playerX, playerY - oneStep)
-			// !collision(playerX, playerY - oneStep, playerSize, playerSize, toCells(bot.x), toCells(bot.y), oneCell, oneCell)
-			) {
-			return true;
-		} else {
-			return false;
-		}
+		var next = playerY - oneStep;
+		return next >= 0 && !isWater(playerX, next);
+	}
+	function playerStepToEast() {
+		var next = playerX + oneStep;
+		return next < collGameCells && !isWater(next, playerY);
+	}
+	function playerStepToSouth() {
+		var next = playerY + oneStep;
+		return next < collGameCells && !isWater(playerX, next);
+	}
+	function playerStepToWest() {
+		var next = playerX - oneStep;
+		return next >= 0 && !isWater(next, playerY);
+	}
+	function isWater(nextX, nextY) {
+		return map[nextY][nextX] === 2;
 	}
 	document.onkeydown = function(pressed){
 		switch (pressed.which) {
-		 	case 87:
-		 		if (playerStepToNorth()) {
-		 			playerY -= oneStep;
-			 		draw();
-	 			}
-		 		break;
-		 	case 83:
-		 		if (playerY + oneStep <= collGameCells - oneStep) {
-		 			playerY += oneStep;
-			 		draw();
-			 	}
-		 		break;
-		 	case 68:
-		 		if (playerX + oneStep <= collGameCells - oneStep) {
-		 			playerX += oneStep;
-			 		draw();
-			 	}
-		 		break;
-		 	case 65:
-		 		if (playerX - oneStep > -oneStep) {
-		 			playerX -= oneStep;
-			 		draw();
-			 	}
-		 		break;
+			case 87:
+				if (playerStepToNorth()) {
+					playerY -= oneStep;
+				}
+				break;
+			case 83:
+				if (playerStepToSouth()) {
+					playerY += oneStep;
+				}
+				break;
+			case 68:
+				if (playerStepToEast()) {
+					playerX += oneStep;
+				}
+				break;
+			case 65:
+				if (playerStepToWest()) {
+					playerX -= oneStep;
+				}
+				break;
 		}
+		draw();
 	}
 }
 function collision(objAX, objAY, objAWidth, objAHeight, objBX, objBY, objBWidth, objBHeight) {
 	if (objAX + objAWidth  > objBX &&
-        objAX              < objBX + objBWidth &&
-        objAY + objAHeight > objBY &&
-        objAY              < objBY + objBHeight) {
-            return true;
-        }
-        else {
-            return false;
-        }
-}
-function collisionPlayerOnMap(futureStepX, futureStepY) {
-	for (var i = 0; i < collGameCells; i++) {
-		for (var j = 0; j < collGameCells; j++) {
-			switch (map[j][i]) {
-				case 2:
-					if (collision(i, j, oneCell, oneCell, futureStepX, futureStepY, playerSize, playerSize)) {
-						console.log("case 2 true");
-						console.log("playerY = " + playerY);
-						console.log("i = " + i + "; j = " +j);
-						console.log("futureStepY = " + futureStepY);
-						return true;
-					} else {
-						console.log("case 2 false");
-						console.log("playerY = " + playerY);
-						console.log("i = " + i + "; j = " +j);
-						console.log("futureStepY = " + futureStepY);
-						return false;
-					}
-					break;
-			}
+		objAX              < objBX + objBWidth &&
+		objAY + objAHeight > objBY &&
+		objAY              < objBY + objBHeight) {
+			return true;
 		}
-	}
+		else {
+			return false;
+		}
 }
