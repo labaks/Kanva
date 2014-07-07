@@ -25,19 +25,6 @@ playerY = 2;
 botX = 5;
 botY = 5;
 
-map =
-	[
-		[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-		[2, 2, 2, 2, 1, 1, 1, 2, 2, 2],
-		[2, 2, 1, 1, 1, 1, 1, 1, 2, 2],
-		[2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-		[2, 2, 1, 1, 1, 1, 1, 1, 1, 2],
-		[2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-		[2, 1, 1, 1, 1, 1, 1, 1, 2, 2],
-		[2, 1, 1, 1, 1, 1, 1, 2, 2, 2],
-		[2, 1, 1, 1, 1, 2, 1, 2, 2, 2],
-		[2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-	]
 // Converter end
 
 function rect(color, x, y, width, height) {
@@ -89,52 +76,6 @@ function background() {
 function createCellGround(Gx, Gy, cell) {
 	cellGround = new rect(cell , Gx, Gy, oneCell, oneCell);
 	cellGround.drawObject();
-}
-function playerMove() {
-	function playerStepToNorth() {
-		var next = playerY - oneStep;
-		return next >= 0 && !isWater(playerX, next);
-	}
-	function playerStepToEast() {
-		var next = playerX + oneStep;
-		return next < collGameCells && !isWater(next, playerY);
-	}
-	function playerStepToSouth() {
-		var next = playerY + oneStep;
-		return next < collGameCells && !isWater(playerX, next);
-	}
-	function playerStepToWest() {
-		var next = playerX - oneStep;
-		return next >= 0 && !isWater(next, playerY);
-	}
-	function isWater(nextX, nextY) {
-		return map[nextY][nextX] === 2;
-	}
-	document.onkeydown = function(pressed){
-		switch (pressed.which) {
-			case 87:
-				if (playerStepToNorth()) {
-					playerY -= oneStep;
-				}
-				break;
-			case 83:
-				if (playerStepToSouth()) {
-					playerY += oneStep;
-				}
-				break;
-			case 68:
-				if (playerStepToEast()) {
-					playerX += oneStep;
-				}
-				break;
-			case 65:
-				if (playerStepToWest()) {
-					playerX -= oneStep;
-				}
-				break;
-		}
-		draw();
-	}
 }
 function collision(objAX, objAY, objAWidth, objAHeight, objBX, objBY, objBWidth, objBHeight) {
 	if (objAX + objAWidth  > objBX &&
