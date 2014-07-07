@@ -16,7 +16,7 @@ function playerMove() {
 		return next >= 0 && !isWater(next, playerY);
 	}
 	function isWater(nextX, nextY) {
-		return map[nextY][nextX] === 2;
+		return map[nextY][nextX].type === "water";
 	}
 	document.onkeydown = function(pressed){
 		switch (pressed.which) {

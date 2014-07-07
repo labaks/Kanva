@@ -62,11 +62,11 @@ function createPlayer() {
 function background() {
 	for (var i = 0; i < collGameCells; i++) {
 		for (var j = 0; j < collGameCells; j++) {
-			switch (map[j][i]) {
-				case 1:
+			switch (map[j][i].type) {
+				case "ground":
 					createCellGround(i, j, "green");
 					break;
-				case 2:
+				case "water":
 					createCellGround(i, j, "blue");
 					break;
 			}
