@@ -18,6 +18,11 @@ function playerMove() {
 	function isWater(nextX, nextY) {
 		return map[nextY][nextX].type === "water";
 	}
+	function isTp() {
+		if (map[playerY][playerX].type === "tp") {
+			dialog();
+		}
+	}
 	document.onkeydown = function(pressed){
 		switch (pressed.which) {
 			case 87:
@@ -40,7 +45,10 @@ function playerMove() {
 					playerX -= oneStep;
 				}
 				break;
+			default:
+				return;
 		}
 		draw();
+		isTp();
 	}
 }

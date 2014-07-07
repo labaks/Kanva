@@ -8,7 +8,7 @@ map =
 		[cell("water", 1), cell("water", 1),  cell("water", 1),  cell("water", 1),  cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("water", 1),  cell("water", 1),  cell("water", 1)],
 		[cell("water", 1), cell("water", 1),  cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("water", 1),  cell("water", 1)],
 		[cell("water", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("water", 1)],
-		[cell("water", 1), cell("water", 1),  cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("water", 1)],
+		[cell("water", 1), cell("water", 1),  cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("tp", 1),     cell("water", 1)],
 		[cell("water", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("water", 1)],
 		[cell("water", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("water", 1),  cell("water", 1)],
 		[cell("water", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("ground", 1), cell("water", 1),  cell("water", 1),  cell("water", 1)],

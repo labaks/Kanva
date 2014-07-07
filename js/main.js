@@ -69,6 +69,9 @@ function background() {
 				case "water":
 					createCellGround(i, j, "blue");
 					break;
+				case "tp":
+					createCellGround(i, j, "#fcb");
+					break;
 			}
 		}
 	}
