@@ -61,17 +61,17 @@ function createPlayer() {
 	player.drawObject();
 }
 function background() {
-	for (var i = 0; i < collGameCells; i++) {
-		for (var j = 0; j < collGameCells; j++) {
-			switch (map[j][i].type) {
+	for (var x = 0; x < collGameCells; x++) {
+		for (var y = 0; y < collGameCells; y++) {
+			switch (map[y][x].type) {
 				case "ground":
-					createCellGround(i, j, "green");
+					createCellGround(x, y, "green");
 					break;
 				case "water":
-					createCellGround(i, j, "blue");
+					createCellGround(x, y, "blue");
 					break;
 				case "tp":
-					createCellGround(i, j, "#fcb");
+					createCellGround(x, y, "#fcb");
 					break;
 			}
 		}
