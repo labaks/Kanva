@@ -41,7 +41,7 @@ function rect(color, x, y, width, height) {
 function draw() {
 	game.drawObject();
 	background();
-	bot.drawObject();
+	// bot.drawObject();
 	createPlayer();
 }
 function init() {
@@ -51,7 +51,8 @@ function init() {
 	canvas.height = toPx(collCanvasCells);
 	canvas.style.backgroundColor = "#ccc";
 	game = new rect("black", gameX, gameY, collGameCells, collGameCells);
-	bot = new rect("grey", botX, botY, oneCell, oneCell);
+	// bot = new rect("grey", botX, botY, oneCell, oneCell);
+	map = map1;
 	draw();
 	playerMove();
 }

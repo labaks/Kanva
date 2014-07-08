@@ -1,5 +1,5 @@
 function dialog() {
-	var wrapper = document.getElementById("wrapper");
+	wrapper = document.getElementById("wrapper");
 
 	dialogArea = document.createElement("div");
 	dialogArea.id = "dialog";
@@ -20,8 +20,13 @@ function dialog() {
 	dialogArea.appendChild(butCancel);
 	butCancel.innerHTML = "Cancel";
 
+	clickOk = false;
+
 	butOk.onclick = function() {
 		wrapper.removeChild(document.getElementById("dialog"));
+		clickOk = true;
+		switchMap();
+		draw();
 	};
 	butCancel.onclick = function() {
 		wrapper.removeChild(document.getElementById("dialog"));
