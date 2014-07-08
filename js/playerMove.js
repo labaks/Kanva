@@ -1,17 +1,17 @@
 function playerMove() {
-	function playerStepToNorth() {
+	function canStepToNorth() {
 		var next = playerY - oneStep;
 		return next >= 0 && !isWater(playerX, next);
 	}
-	function playerStepToEast() {
+	function canStepToEast() {
 		var next = playerX + oneStep;
 		return next < collGameCells && !isWater(next, playerY);
 	}
-	function playerStepToSouth() {
+	function canStepToSouth() {
 		var next = playerY + oneStep;
 		return next < collGameCells && !isWater(playerX, next);
 	}
-	function playerStepToWest() {
+	function canStepToWest() {
 		var next = playerX - oneStep;
 		return next >= 0 && !isWater(next, playerY);
 	}
@@ -26,22 +26,22 @@ function playerMove() {
 	document.onkeydown = function(pressed){
 		switch (pressed.which) {
 			case 87:
-				if (playerStepToNorth()) {
+				if (canStepToNorth()) {
 					playerY -= oneStep;
 				}
 				break;
 			case 83:
-				if (playerStepToSouth()) {
+				if (canStepToSouth()) {
 					playerY += oneStep;
 				}
 				break;
 			case 68:
-				if (playerStepToEast()) {
+				if (canStepToEast()) {
 					playerX += oneStep;
 				}
 				break;
 			case 65:
-				if (playerStepToWest()) {
+				if (canStepToWest()) {
 					playerX -= oneStep;
 				}
 				break;

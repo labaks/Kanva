@@ -52,7 +52,7 @@ function init() {
 	canvas.style.backgroundColor = "#ccc";
 	game = new rect("black", gameX, gameY, collGameCells, collGameCells);
 	// bot = new rect("grey", botX, botY, oneCell, oneCell);
-	map = map1;
+	map = maps.map1;
 	draw();
 	playerMove();
 }
