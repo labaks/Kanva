@@ -3,37 +3,47 @@ function cell(type, id) {
 }
 var maps = {};
 
-var waterId1 = cell("water", 1);
-var groundId1 = cell("ground", 1);
+var wId1 = cell("water", 1);
+var gId1 = cell("ground", 1);
 var tpId1 = cell("tp", "map2");
 var tpId2 = cell("tp", "map1");
 
 maps.map1 =
 	[
-		[waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1],
-		[waterId1,  waterId1,  waterId1,  waterId1,  groundId1, groundId1, groundId1, waterId1,  waterId1,  waterId1],
-		[waterId1,  waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  waterId1],
-		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
-		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, tpId1],
-		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  waterId1,  waterId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, waterId1,  groundId1, waterId1,  waterId1,  waterId1],
-		[waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1],
+		[wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
+		[wId1, wId1, wId1, wId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, wId1, wId1, wId1],
+		[wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1],
+		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, tpId1],
+		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1, gId1, gId1, gId1, gId1, wId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1, gId1, gId1, gId1, gId1, wId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[wId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, gId1, wId1],
+		[wId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1],
+		[wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
 	];
 
 maps.map2 =
 	[
-		[waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1],
-		[waterId1,  waterId1,  waterId1,  waterId1,  groundId1, groundId1, groundId1, waterId1,  waterId1,  waterId1],
-		[waterId1,  waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  groundId1],
-		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
-		[tpId2,     groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
-		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1,  groundId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  waterId1,  groundId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, waterId1,  groundId1, waterId1,  waterId1,  waterId1],
-		[waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1],
+		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
+		[wId1,  wId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
+		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, wId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1],
+		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, wId1, wId1, wId1, gId1, wId1, gId1, gId1],
+		[tpId2, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, gId1, gId1, gId1, gId1],
+		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1],
+		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[wId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
+		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1],
+		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, wId1, wId1],
+		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1],
+		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
 	];
 
 function switchMap() {

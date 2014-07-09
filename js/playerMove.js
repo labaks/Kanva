@@ -5,11 +5,11 @@ function playerMove() {
 	}
 	function canStepToEast() {
 		var next = playerX + oneStep;
-		return next < collGameCells && !isWater(next, playerY);
+		return next < collGameCellsWidth && !isWater(next, playerY);
 	}
 	function canStepToSouth() {
 		var next = playerY + oneStep;
-		return next < collGameCells && !isWater(playerX, next);
+		return next < collGameCellsHeight && !isWater(playerX, next);
 	}
 	function canStepToWest() {
 		var next = playerX - oneStep;

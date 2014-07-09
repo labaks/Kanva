@@ -1,18 +1,19 @@
-// Converter start
-var cellSize = 50;
+document.addEventListener("DOMContentLoaded", loaded);
 
-function toPx(val) {
-	return val * cellSize;
+function loaded() {
+	leftPanel = document.getElementById("leftPanel");
+	rightPanel = document.getElementById("rightPanel");
+	leftPanel.style.height = rightPanel.style.height = deviceHeight;
+	leftPanel.style.width = rightPanel.style.width = (deviceWidth - toPx(collCanvasCellsWidth)) / 2;
+	init();
 }
-function toCells(val) {
-	return val / cellSize;
-}
-function coordinate(coord) {
-	return toPx(coord);
-}
-
-collCanvasCells = 10;
-collGameCells = 10;
+deviceWidth = window.document.documentElement.clientWidth;
+deviceHeight = window.document.documentElement.clientHeight;
+// data
+collCanvasCellsWidth = 20;
+collCanvasCellsHeight = 15;
+collGameCellsWidth = 20;
+collGameCellsHeight = 15;
 playerSize = 1;
 oneCell = 1;
 oneStep = 1;
@@ -25,6 +26,18 @@ playerY = 2;
 botX = 5;
 botY = 5;
 
+// Converter start
+var cellSize = deviceHeight / collGameCellsHeight;
+
+function toPx(val) {
+	return val * cellSize;
+}
+function toCells(val) {
+	return val / cellSize;
+}
+function coordinate(coord) {
+	return toPx(coord);
+}
 // Converter end
 
 function rect(color, x, y, width, height) {
@@ -47,10 +60,10 @@ function draw() {
 function init() {
 	canvas = document.getElementById('myCanv');
 	ctx = canvas.getContext('2d');
-	canvas.width = toPx(collCanvasCells);
-	canvas.height = toPx(collCanvasCells);
+	canvas.width = toPx(collCanvasCellsWidth);
+	canvas.height = deviceHeight;
 	canvas.style.backgroundColor = "#ccc";
-	game = new rect("black", gameX, gameY, collGameCells, collGameCells);
+	game = new rect("black", gameX, gameY, collGameCellsWidth, collGameCellsHeight);
 	// bot = new rect("grey", botX, botY, oneCell, oneCell);
 	map = maps.map1;
 	draw();
@@ -61,8 +74,8 @@ function createPlayer() {
 	player.drawObject();
 }
 function background() {
-	for (var x = 0; x < collGameCells; x++) {
-		for (var y = 0; y < collGameCells; y++) {
+	for (var x = 0; x < collGameCellsWidth; x++) {
+		for (var y = 0; y < collGameCellsHeight; y++) {
 			switch (map[y][x].type) {
 				case "ground":
 					createCellGround(x, y, "green");
