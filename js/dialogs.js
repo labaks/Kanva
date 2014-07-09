@@ -1,9 +1,13 @@
 function dialog() {
 	wrapper = document.getElementById("wrapper");
 
+	modalArea = document.createElement("div");
+	modalArea.id = "modal";
+	wrapper.appendChild(modalArea);
+
 	dialogArea = document.createElement("div");
 	dialogArea.id = "dialog";
-	wrapper.appendChild(dialogArea);
+	modalArea.appendChild(dialogArea);
 
 	dialogTitle = document.createElement("p");
 	dialogTitle.id = "dialogTitle";
@@ -23,12 +27,12 @@ function dialog() {
 	clickOk = false;
 
 	butOk.onclick = function() {
-		wrapper.removeChild(document.getElementById("dialog"));
+		wrapper.removeChild(document.getElementById("modal"));
 		clickOk = true;
 		switchMap();
 		draw();
 	};
 	butCancel.onclick = function() {
-		wrapper.removeChild(document.getElementById("dialog"));
+		wrapper.removeChild(document.getElementById("modal"));
 	}
 }

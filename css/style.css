@@ -3,8 +3,16 @@ body, html {
 	padding: 0;
 }
 #wrapper {
-	position: relative;
 	display: table;
+	position: relative;
+}
+#modal {
+	position: absolute;
+	background: rgba(0,0,0,.5);
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
 }
 #dialog {
 	position: absolute;

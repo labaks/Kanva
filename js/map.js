@@ -26,12 +26,12 @@ maps.map2 =
 	[
 		[waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1],
 		[waterId1,  waterId1,  waterId1,  waterId1,  groundId1, groundId1, groundId1, waterId1,  waterId1,  waterId1],
-		[waterId1,  waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  waterId1],
-		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1],
-		[tpId2,     groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1],
-		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  waterId1],
-		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  waterId1,  waterId1],
+		[waterId1,  waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  groundId1],
+		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
+		[tpId2,     groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
+		[groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1],
+		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, groundId1,  groundId1],
+		[waterId1,  groundId1, groundId1, groundId1, groundId1, groundId1, groundId1, waterId1,  waterId1,  groundId1],
 		[waterId1,  groundId1, groundId1, groundId1, groundId1, waterId1,  groundId1, waterId1,  waterId1,  waterId1],
 		[waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1,  waterId1],
 	];
