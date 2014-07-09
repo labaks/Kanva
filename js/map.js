@@ -1,53 +1,35 @@
-function cell(type, id) {
-	return { type: type, id: id };
+function cell(type, id, color) {
+	return { type: type, id: id, color: color };
 }
-var maps = {};
 
-var wId1 = cell("water", 1);
-var gId1 = cell("ground", 1);
-var tpId1 = cell("tp", "map2");
-var tpId2 = cell("tp", "map1");
+var water = cell("water", 1, "blue"),
+	ground = cell("ground", 1, "green"),
+	maps = {};
 
 maps.map1 =
 	[
-		[wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
-		[wId1, wId1, wId1, wId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, wId1, wId1, wId1],
-		[wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1],
-		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, tpId1],
-		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1, gId1, gId1, gId1, gId1, wId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1, gId1, gId1, gId1, gId1, wId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[wId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, gId1, wId1],
-		[wId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1],
-		[wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
+		[water,  water,  water,  water,  water,  water,  water,  water,  water,  water],
+		[water,  water,  water,  water,  ground, ground, ground, water,  water,  water],
+		[water,  water,  ground, ground, ground, ground, ground, ground, water,  water],
+		[ground, ground, ground, ground, ground, ground, ground, ground, ground, ground],
+		[ground, ground, ground, ground, ground, ground, ground, ground, ground, cell("tp", "map2", "#fcb")],
+		[ground, ground, ground, ground, ground, ground, ground, ground, ground, ground],
+		[water,  ground, ground, ground, ground, ground, ground, ground, ground, water],
+		[water,  ground, ground, ground, ground, ground, ground, water,  water,  water],
+		[water,  ground, ground, ground, ground, water,  ground, water,  water,  water],
+		[water,  water,  water,  water,  water,  water,  water,  water,  water,  water],
 	];
 
 maps.map2 =
 	[
-		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
-		[wId1,  wId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
-		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, wId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1],
-		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, wId1, wId1, wId1, gId1, gId1, gId1, wId1, wId1, wId1, gId1, wId1, gId1, gId1],
-		[tpId2, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1, gId1, gId1, gId1, gId1],
-		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1],
-		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[gId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[wId1,  gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1],
-		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, gId1, wId1],
-		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, wId1, wId1, gId1, gId1, gId1, gId1, wId1, wId1, gId1, wId1, wId1],
-		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, gId1, gId1, wId1, wId1, wId1, wId1, wId1, wId1],
-		[wId1,  wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1, wId1],
+		[water,  water,  water,  water,  water,  water,  water,  water,  water,  water],
+		[water,  water,  water,  water,  ground, ground, ground, water,  water,  water],
+		[water,  water,  ground, ground, ground, ground, ground, ground, water,  water],
+		[ground, ground, ground, ground, ground, ground, ground, ground, ground, water],
+		[cell("tp", "map1", "#fcb"), ground, ground, ground, ground, ground, ground, ground, ground, water],
+		[ground, ground, ground, ground, ground, ground, ground, ground, ground, water],
+		[water,  ground, ground, ground, ground, ground, ground, ground, water,  water],
+		[water,  ground, ground, ground, ground, ground, ground, water,  water,  water],
+		[water,  ground, ground, ground, ground, water,  ground, water,  water,  water],
+		[water,  water,  water,  water,  water,  water,  water,  water,  water,  water],
 	];
-
-function switchMap() {
-	if (clickOk) {
-		map = maps[map[playerY][playerX].id];
-	};
-}

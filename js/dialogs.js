@@ -1,13 +1,9 @@
 function dialog() {
 	wrapper = document.getElementById("wrapper");
 
-	modalArea = document.createElement("div");
-	modalArea.id = "modal";
-	wrapper.appendChild(modalArea);
-
 	dialogArea = document.createElement("div");
 	dialogArea.id = "dialog";
-	modalArea.appendChild(dialogArea);
+	wrapper.appendChild(dialogArea);
 
 	dialogTitle = document.createElement("p");
 	dialogTitle.id = "dialogTitle";
@@ -24,15 +20,12 @@ function dialog() {
 	dialogArea.appendChild(butCancel);
 	butCancel.innerHTML = "Cancel";
 
-	clickOk = false;
-
 	butOk.onclick = function() {
-		wrapper.removeChild(document.getElementById("modal"));
-		clickOk = true;
-		switchMap();
+		wrapper.removeChild(document.getElementById("dialog"));
+		map = maps[map[player.y][player.x].id];
 		draw();
 	};
 	butCancel.onclick = function() {
-		wrapper.removeChild(document.getElementById("modal"));
+		wrapper.removeChild(document.getElementById("dialog"));
 	}
 }
