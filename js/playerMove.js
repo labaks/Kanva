@@ -10,14 +10,14 @@ function movePlayer(next) {
 
 	function isIn(next, collCells) {
 		return next >= 0 && next < collCells;
-	};
+	}
 	function isWater() {
 		return map[next.y][next.x].type === "water";
-	};
+	}
 	function isDoor() {
 		return map[player.y][player.x].type === "door";
-	};
-};
+	}
+}
 
 function bindEventHandlers() {
 	document.onkeydown = function(pressed) {
@@ -34,14 +34,14 @@ function bindEventHandlers() {
 
 	function toNorth() {
 		movePlayer(new Point(player.x, player.y - oneStep));
-	};
+	}
 	function toSouth() {
 		movePlayer(new Point(player.x, player.y + oneStep));
-	};
+	}
 	function toEast() {
 		movePlayer(new Point(player.x + oneStep, player.y));
-	};
+	}
 	function toWest() {
 		movePlayer(new Point(player.x - oneStep, player.y));
-	};
+	}
 }

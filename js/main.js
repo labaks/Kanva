@@ -1,23 +1,20 @@
 document.addEventListener("DOMContentLoaded", loaded);
 
 function loaded() {
-	leftPanel = document.getElementById("leftPanel");
-	rightPanel = document.getElementById("rightPanel");
+	var leftPanel = document.getElementById("leftPanel");
+	var rightPanel = document.getElementById("rightPanel");
 	leftPanel.style.height = rightPanel.style.height = deviceHeight;
 	leftPanel.style.width = rightPanel.style.width = (deviceWidth - toPx(collCanvasCellsWidth)) / 2;
 	init();
 }
-deviceWidth = window.document.documentElement.clientWidth;
-deviceHeight = window.document.documentElement.clientHeight;
+var deviceWidth = window.document.documentElement.clientWidth;
+var deviceHeight = window.document.documentElement.clientHeight;
 // data
-collCanvasCellsWidth = 20;
-collCanvasCellsHeight = 15;
-playerSize = 1;
-oneCell = 1;
-oneStep = 1;
-
-playerX = 2;
-playerY = 2;
+var collCanvasCellsWidth = 20;
+var collCanvasCellsHeight = 15;
+var playerSize = 1;
+var oneCell = 1;
+var oneStep = 1;
 
 // Converter start
 var cellSize = deviceHeight / collCanvasCellsHeight;
@@ -25,20 +22,17 @@ var cellSize = deviceHeight / collCanvasCellsHeight;
 function toPx(val) {
 	return val * cellSize;
 }
-function toCells(val) {
-	return val / cellSize;
-}
 // Converter end
 var player = new Point(2, 2);
 
 function Point(x, y) {
 	this.x = x;
 	this.y = y;
-};
+}
 Point.prototype.move = function(x, y) {
 	this.x = x;
 	this.y = y;
-}
+};
 function drawRect(color, point, size) {
 	ctx.fillStyle = color;
 	ctx.fillRect(toPx(point.x), toPx(point.y), toPx(size), toPx(size));
