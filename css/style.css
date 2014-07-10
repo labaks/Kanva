@@ -9,7 +9,6 @@ body {
 #wrapper {
 	position: relative;
 	overflow: hidden;
-	margin: 0 auto;
 	white-space: nowrap;
 }
 #leftPanel, #rightPanel {
@@ -42,4 +41,23 @@ body {
 #butOk, #butCancel {
 	font-size: 16px;
 	margin: 0 5px;
+}
+.gameWrapper {
+	position: relative;
+	display: inline-block;
+}
+.navArea {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+.navArea button {
+	background: transparent;
+	border: 1px solid #ccc;
+	outline: 0;
+	padding: 10px;
+}
+#moveUp, #moveDown {
+	margin: 0 auto;
+	display: block;
 }

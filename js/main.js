@@ -29,13 +29,13 @@ function toCells(val) {
 	return val / cellSize;
 }
 // Converter end
-var player = new pointObj(2, 2);
+var player = new Point(2, 2);
 
-function pointObj(x, y) {
+function Point(x, y) {
 	this.x = x;
 	this.y = y;
 };
-pointObj.prototype.move = function(x, y) {
+Point.prototype.move = function(x, y) {
 	this.x = x;
 	this.y = y;
 }
@@ -55,7 +55,7 @@ function init() {
 	canvas.style.backgroundColor = "#ccc";
 	map = maps.map1;
 	draw();
-	playerMove();
+	bindEventHandlers();
 }
 function drawPlayer() {
 	drawRect("orange", player, playerSize);
