@@ -1,54 +1,34 @@
 function playerMove() {
-	function canStepToNorth() {
-		var next = playerY - oneStep;
-		return next >= 0 && !isWater(playerX, next);
-	}
-	function canStepToEast() {
-		var next = playerX + oneStep;
-		return next < collGameCellsWidth && !isWater(next, playerY);
-	}
-	function canStepToSouth() {
-		var next = playerY + oneStep;
-		return next < collGameCellsHeight && !isWater(playerX, next);
-	}
-	function canStepToWest() {
-		var next = playerX - oneStep;
-		return next >= 0 && !isWater(next, playerY);
-	}
-	function isWater(nextX, nextY) {
-		return map[nextY][nextX].type === "water";
-	}
-	function isTp() {
-		if (map[playerY][playerX].type === "tp") {
-			dialog();
-		}
-	}
 	document.onkeydown = function(pressed){
-		switch (pressed.which) {
-			case 87:
-				if (canStepToNorth()) {
-					playerY -= oneStep;
-				}
-				break;
-			case 83:
-				if (canStepToSouth()) {
-					playerY += oneStep;
-				}
-				break;
-			case 68:
-				if (canStepToEast()) {
-					playerX += oneStep;
-				}
-				break;
-			case 65:
-				if (canStepToWest()) {
-					playerX -= oneStep;
-				}
-				break;
-			default:
-				return;
-		}
+		var next = new pointObj (player.x, player.y);
+		if (pressed.which == 87)
+			next.y = player.y - oneStep;
+		else if (pressed.which == 83)
+			next.y = player.y + oneStep;
+		else if (pressed.which == 68)
+			next.x = player.x + oneStep;
+		else if (pressed.which == 65)
+			next.x = player.x - oneStep;
+		else
+			return;
+
+		var isBoard = isIn(next.x, collCanvasCellsWidth) && isIn(next.y, collCanvasCellsHeight);
+		if (isBoard && !isWater())
+			player.move(next.x, next.y);
+
+		if (!isBoard && isDoor())
+			dialog();
+
 		draw();
-		isTp();
-	}
+
+		function isIn(next, collCells) {
+			return next >= 0 && next < collCells;
+		};
+		function isWater() {
+			return map[next.y][next.x].type === "water";
+		};
+		function isDoor() {
+			return map[player.y][player.x].type === "door";
+		};
+	};
 }

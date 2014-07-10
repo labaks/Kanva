@@ -24,15 +24,12 @@ function dialog() {
 	dialogArea.appendChild(butCancel);
 	butCancel.innerHTML = "Cancel";
 
-	clickOk = false;
-
 	butOk.onclick = function() {
 		wrapper.removeChild(document.getElementById("modal"));
-		clickOk = true;
-		switchMap();
+		map = maps[map[player.y][player.x].id];
 		draw();
 	};
 	butCancel.onclick = function() {
 		wrapper.removeChild(document.getElementById("modal"));
-	}
+	};
 }
