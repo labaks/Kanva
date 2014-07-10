@@ -9,27 +9,23 @@ function dialog() {
 	dialogArea.id = "dialog";
 	modalArea.appendChild(dialogArea);
 
-	dialogTitle = document.createElement("p");
-	dialogTitle.id = "dialogTitle";
-	dialogArea.appendChild(dialogTitle);
-	dialogTitle.innerHTML = "Dialog title";
+	function addEllToDialog(el, id, innerText) {
+		var val = document.createElement(el);
+		val.id = id;
+		dialogArea.appendChild(val);
+		val.innerHTML = innerText;
+	}
 
-	butOk = document.createElement("button");
-	butOk.id = "butOk"
-	dialogArea.appendChild(butOk);
-	butOk.innerHTML = "Ok";
+	addEllToDialog("p", "dialogTitle", "Dialog title");
+	addEllToDialog("button", "butOk", "Ok");
+	addEllToDialog("button", "butCancel", "Cancel");
 
-	butCancel = document.createElement("button");
-	butCancel.id = "butCancel";
-	dialogArea.appendChild(butCancel);
-	butCancel.innerHTML = "Cancel";
-
-	butOk.onclick = function() {
+	document.getElementById("butOk").onclick = function() {
 		wrapper.removeChild(document.getElementById("modal"));
 		map = maps[map[player.y][player.x].id];
 		draw();
 	};
-	butCancel.onclick = function() {
+	document.getElementById("butCancel").onclick = function() {
 		wrapper.removeChild(document.getElementById("modal"));
 	};
 }
