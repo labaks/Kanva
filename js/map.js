@@ -1,16 +1,17 @@
-function cell(type, id, color) {
+function cell(type, id, px, py) {
 	return {
 		type: type,
 		id: id,
-		color: color
+		px: px,
+		py: py
 	};
 }
 var maps = {};
 
-var wId1 = cell("water", 1, "blue");
-var gId1 = cell("ground", 1, "green");
-var dId1 = cell("door", "map2", "#fcb");
-var dId2 = cell("door", "map1", "#fcb");
+var wId1 = cell("water", 1, 0, 3);
+var gId1 = cell("ground", 1, 1, 1);
+var dId1 = cell("door", "map2", 0, 0);
+var dId2 = cell("door", "map1", 2, 0);
 
 maps.map1 =
 	[

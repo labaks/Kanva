@@ -33,6 +33,19 @@ Point.prototype.move = function(x, y) {
 	this.x = x;
 	this.y = y;
 };
+function pieceTexture(px, py, pWidth, pHeight) {
+	return {
+		px: px,
+		py: py,
+		pWidth: pWidth,
+		pHeight: pHeight
+	};
+}
+function drawTexture(image, point, size, piece) {
+	image.onload = function() {
+		ctx.drawImage(image, piece.px, piece.py, piece.pWidth, piece.pHeight, toPx(point.x), toPx(point.y), toPx(size), toPx(size));
+	}
+}
 function drawRect(color, point, size) {
 	ctx.fillStyle = color;
 	ctx.fillRect(toPx(point.x), toPx(point.y), toPx(size), toPx(size));
@@ -52,12 +65,18 @@ function init() {
 	bindEventHandlers();
 }
 function drawPlayer() {
-	drawRect("orange", player, playerSize);
+	var playerImg = new Image();
+	var playerPiece = pieceTexture(0, 0, 50, 50);
+	playerImg.src = 'img/player.png';
+	drawTexture(playerImg, player, playerSize, playerPiece)
 }
 function background() {
+	var mapImg = new Image();
+	mapImg.src = 'img/texture1.png';
 	for (var x = 0; x < collCanvasCellsWidth; x++) {
 		for (var y = 0; y < collCanvasCellsHeight; y++) {
-			drawRect(map[y][x].color, {x: x, y: y}, oneCell);
+			var mapPiece = pieceTexture(map[y][x].px, map[y][x].py, 50, 50);
+			drawTexture(mapImg, {x: x, y: y}, oneCell, mapPiece);
 		}
 	}
 }
