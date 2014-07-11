@@ -25,6 +25,16 @@ function toPx(val) {
 // Converter end
 var player = new Point(2, 2);
 
+var textures = {
+	field: createTexture('img/texture1.png'),
+	player: createTexture('img/player.png')
+}
+
+function createTexture(source) {
+	var texture = new Image();
+	texture.src = source;
+	return texture;
+}
 function Point(x, y) {
 	this.x = x;
 	this.y = y;
@@ -42,14 +52,12 @@ function pieceTexture(px, py, pWidth, pHeight) {
 	};
 }
 function drawTexture(image, point, size, piece) {
-	image.onload = function() {
-		ctx.drawImage(image, piece.px, piece.py, piece.pWidth, piece.pHeight, toPx(point.x), toPx(point.y), toPx(size), toPx(size));
-	}
+	ctx.drawImage(image, piece.px * piece.pWidth, piece.py * piece.pHeight, piece.pWidth, piece.pHeight, toPx(point.x), toPx(point.y), toPx(size), toPx(size));
 }
-function drawRect(color, point, size) {
-	ctx.fillStyle = color;
-	ctx.fillRect(toPx(point.x), toPx(point.y), toPx(size), toPx(size));
-}
+// function drawRect(color, point, size) {
+// 	ctx.fillStyle = color;
+// 	ctx.fillRect(toPx(point.x), toPx(point.y), toPx(size), toPx(size));
+// }
 function draw() {
 	background();
 	drawPlayer();
@@ -64,19 +72,22 @@ function init() {
 	draw();
 	bindEventHandlers();
 }
+
 function drawPlayer() {
-	var playerImg = new Image();
 	var playerPiece = pieceTexture(0, 0, 50, 50);
-	playerImg.src = 'img/player.png';
-	drawTexture(playerImg, player, playerSize, playerPiece)
+	textures.player.onload = function() {
+		drawTexture(textures.player, player, playerSize, playerPiece)
+	}
+
 }
+
 function background() {
-	var mapImg = new Image();
-	mapImg.src = 'img/texture1.png';
+	textures.field.onload = function(){
 	for (var x = 0; x < collCanvasCellsWidth; x++) {
 		for (var y = 0; y < collCanvasCellsHeight; y++) {
 			var mapPiece = pieceTexture(map[y][x].px, map[y][x].py, 50, 50);
-			drawTexture(mapImg, {x: x, y: y}, oneCell, mapPiece);
+			drawTexture(textures.field, {x: x, y: y}, oneCell, mapPiece);
+			}
 		}
 	}
 }
